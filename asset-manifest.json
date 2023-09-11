@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/gunfire-client/static/css/main.6351959b.css",
-    "main.js": "/gunfire-client/static/js/main.9d5acc20.js",
+    "main.js": "/gunfire-client/static/js/main.4220d6b5.js",
+    "static/media/Soldier.glb": "/gunfire-client/static/media/Soldier.5c2bef5a58f2e1cf861a.glb",
     "static/media/tile.jpg": "/gunfire-client/static/media/tile.82ac3a3cd47049506aa6.jpg",
     "static/media/MPX.glb": "/gunfire-client/static/media/MPX.24472929e4f0ff208eab.glb",
     "static/media/dirt.jpg": "/gunfire-client/static/media/dirt.59ed32793c180834b389.jpg",
     "index.html": "/gunfire-client/index.html",
     "main.6351959b.css.map": "/gunfire-client/static/css/main.6351959b.css.map",
-    "main.9d5acc20.js.map": "/gunfire-client/static/js/main.9d5acc20.js.map"
+    "main.4220d6b5.js.map": "/gunfire-client/static/js/main.4220d6b5.js.map"
   },
   "entrypoints": [
     "static/css/main.6351959b.css",
-    "static/js/main.9d5acc20.js"
+    "static/js/main.4220d6b5.js"
   ]
 }
