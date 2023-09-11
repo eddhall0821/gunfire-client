@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/gunfire-client/static/css/main.6351959b.css",
+    "main.js": "/gunfire-client/static/js/main.9d5acc20.js",
+    "static/media/tile.jpg": "/gunfire-client/static/media/tile.82ac3a3cd47049506aa6.jpg",
+    "static/media/MPX.glb": "/gunfire-client/static/media/MPX.24472929e4f0ff208eab.glb",
+    "static/media/dirt.jpg": "/gunfire-client/static/media/dirt.59ed32793c180834b389.jpg",
+    "index.html": "/gunfire-client/index.html",
+    "main.6351959b.css.map": "/gunfire-client/static/css/main.6351959b.css.map",
+    "main.9d5acc20.js.map": "/gunfire-client/static/js/main.9d5acc20.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6351959b.css",
+    "static/js/main.9d5acc20.js"
+  ]
+}
