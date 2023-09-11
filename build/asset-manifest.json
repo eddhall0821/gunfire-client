@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gunfire/static/css/main.6351959b.css",
+    "main.js": "/gunfire/static/js/main.2ec70d20.js",
+    "static/media/tile.jpg": "/gunfire/static/media/tile.82ac3a3cd47049506aa6.jpg",
+    "static/media/MPX.glb": "/gunfire/static/media/MPX.24472929e4f0ff208eab.glb",
+    "index.html": "/gunfire/index.html",
+    "main.6351959b.css.map": "/gunfire/static/css/main.6351959b.css.map",
+    "main.2ec70d20.js.map": "/gunfire/static/js/main.2ec70d20.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6351959b.css",
+    "static/js/main.2ec70d20.js"
+  ]
+}
