@@ -3,10 +3,13 @@ import { Sky, PointerLockControls, KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Ground } from "./Ground";
 import { Player } from "./Player";
-import { Cube, Cubes } from "./Cube";
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GunRecoil from "./components/GunRecoil";
 import { SocketManager } from "./components/SocketManager";
+import { Soldiers } from "./components/Soldier";
+import { PlaneGeometry } from "three";
+import MuzzleFlash from "./components/MuzzleFlash";
+import { Cube, Cubes } from "./Cube";
 
 // The original was made by Maksim Ivanow: https://www.youtube.com/watch?v=Lc2JvBXMesY&t=124s
 // This demo needs pointer-lock, that works only if you open it in a new window
@@ -55,6 +58,7 @@ export default function App() {
       }, 50);
     }
   }, [shooting]);
+
   return (
     <>
       <SocketManager />
@@ -68,8 +72,12 @@ export default function App() {
         ]}
       >
         <Canvas
+          dpr={0.8}
           shadows
-          camera={{ fov: 104 }}
+          camera={{
+            fov: 104,
+            // aspect: 1920 / 1080
+          }}
           onMouseDown={onPointerDown}
           onPointerUp={onPointerUp}
         >
@@ -82,9 +90,9 @@ export default function App() {
               <Player aiming={aiming} shooting={shooting} />
               <Cube position={[0, 0.5, -10]} />
               <Cubes />
+              <Soldiers />
             </Physics>
             <GunRecoil aiming={aiming} shooting={shooting} />
-            {/* <PointerLockControls /> */}
           </mesh>
         </Canvas>
       </KeyboardControls>

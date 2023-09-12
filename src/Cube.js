@@ -10,7 +10,6 @@ import { useCubeStore } from "./store/cubeStore";
 
 export const Cubes = () => {
   const cubes = useCubeStore((state) => state.cubes);
-  console.log(cubes);
   return cubes.map((coords, index) => (
     <Cube
       key={index}
@@ -24,6 +23,7 @@ export function Cube(props) {
   const [hover, set] = useState(null);
   const addCube = useCubeStore((state) => state.addCube);
   const texture = useTexture(dirt);
+
   const onMove = useCallback((e) => {
     e.stopPropagation();
     set(Math.floor(e.faceIndex / 2));
@@ -53,7 +53,7 @@ export function Cube(props) {
       >
         {[...Array(6)].map((_, index) => (
           <meshStandardMaterial
-            attach={`material-${index}`}
+            // attach={`material-${index}`}
             key={index}
             map={texture}
             color={hover === index ? "hotpink" : "white"}

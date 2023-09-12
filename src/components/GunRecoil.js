@@ -1,7 +1,8 @@
 import { PointerLockControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect } from "react";
-import { Euler } from "three";
+import { Euler, MathUtils } from "three";
+import { socket } from "./SocketManager";
 
 function GunRecoil({ aiming, shooting }) {
   const { gl, camera } = useThree();
@@ -24,16 +25,19 @@ function GunRecoil({ aiming, shooting }) {
     newCamera.setFromQuaternion(camera.quaternion);
     newCamera.x += 10 * 0.002 * RECOIL * x;
     newCamera.x = Math.max(_PI_2 - Math.PI, Math.min(_PI_2 - 0, newCamera.x));
-    newCamera.y -= 10 * 0.002 * RECOIL * 0.5;
-    newCamera.y = Math.max(_PI_2 - Math.PI, Math.min(_PI_2 - 0, newCamera.y));
     camera.quaternion.setFromEuler(newCamera);
   };
 
-  useFrame((state) => {
-    if (aiming) {
-      // state.camera.position.z -= 5;
+  useFrame(() => {
+    if (aiming && camera.fov > 70) {
+      camera.fov -= 5;
+      camera.updateProjectionMatrix();
     }
-    // console.log(time);
+
+    if (!aiming && camera.fov < 104) {
+      camera.fov += 5;
+      camera.updateProjectionMatrix();
+    }
   });
 
   return (

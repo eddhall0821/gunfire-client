@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { io } from "socket.io-client";
-import { useCubeStore } from "../store/cubeStore";
-export const socket = io("http://localhost");
-
+import { usePlayerStore } from "../store/playerStore";
+export const socket = io(process.env.REACT_APP_HOST);
+console.log(process.env);
 export const SocketManager = () => {
-  const setCube = useCubeStore((state) => state.setCube);
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
   useEffect(() => {
     function onConnect() {
       console.log("connected");
@@ -19,8 +19,7 @@ export const SocketManager = () => {
     }
 
     function onCharacters(value) {
-      console.log("characters", value);
-      setCube(value);
+      setPlayer(value);
     }
 
     function onMove(value) {
