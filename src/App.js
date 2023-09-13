@@ -85,6 +85,7 @@ export default function App() {
         ]}
       >
         <Canvas
+          id="canvas"
           dpr={resolution}
           shadows
           camera={{
