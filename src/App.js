@@ -18,6 +18,7 @@ import { Cube, Cubes } from "./Cube";
 import Wall from "./components/Wall";
 import { useControls } from "leva";
 import Ball from "./components/Ball";
+import Menu from "./components/Menu";
 
 export default function App() {
   const [aiming, setAiming] = useState(false);
@@ -27,10 +28,14 @@ export default function App() {
     return {
       resolution: { value: 0.5, min: 0.1, max: 2 },
       mass: { value: 1, min: 1, max: 10 },
+      size: { value: 0.1, min: 0.1, max: 10 },
       restitution: { value: 1.5, min: 1, max: 2 },
     };
   }, []);
-  const { resolution, mass, restitution } = useControls("options", options);
+  const { size, resolution, mass, restitution } = useControls(
+    "options",
+    options
+  );
 
   const onPointerDown = (e) => {
     switch (e.button) {
@@ -84,6 +89,7 @@ export default function App() {
           { name: "jump", keys: ["Space"] },
         ]}
       >
+        <Menu />
         <Canvas
           id="canvas"
           dpr={resolution}
@@ -112,6 +118,7 @@ export default function App() {
                 position={[5, 5, 5]}
                 mass={mass}
                 restitution={restitution}
+                size={size}
               />
             </Physics>
             <GunRecoil aiming={aiming} shooting={shooting} />

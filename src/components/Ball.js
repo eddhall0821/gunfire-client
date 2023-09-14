@@ -11,13 +11,13 @@ export function Ball(props) {
           setHover(false);
         }}
       >
-        <sphereGeometry args={[1, 24, 24]} />
+        <sphereGeometry args={[props.size, 12, 12]} />
         <meshStandardMaterial
           color={hover ? "red" : "green"}
           roughness={0.8}
           metalness={0.2}
         />
-        <BallCollider args={[1, 0.5]} />
+        <BallCollider args={[props.size]} />
       </mesh>
     </RigidBody>
   );

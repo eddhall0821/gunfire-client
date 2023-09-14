@@ -56,7 +56,7 @@ export function Wall(props) {
         />
       </mesh>
 
-      <mesh
+      {/* <mesh
         receiveShadow
         position={[MAP_SIZE, MAP_SIZE / 2, 0]}
         rotation={[0, 0, 0]}
@@ -66,7 +66,7 @@ export function Wall(props) {
           map={texture}
           map-repeat={[MAP_SIZE, MAP_SIZE / 2]}
         />
-      </mesh>
+      </mesh> */}
 
       {/* 천장 */}
       <mesh receiveShadow position={[0, 12, 0]} rotation-x={-Math.PI / 2}>

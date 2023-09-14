@@ -1,11 +1,11 @@
 import { PointerLockControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useEffect } from "react";
-import { Euler, MathUtils } from "three";
-import { socket } from "./SocketManager";
+import { useEffect, useRef, useState } from "react";
+import { Euler } from "three";
 
 function GunRecoil({ aiming, shooting }) {
   const { gl, camera } = useThree();
+
   const RECOIL = 2;
 
   useEffect(() => {
@@ -41,7 +41,11 @@ function GunRecoil({ aiming, shooting }) {
   });
 
   return (
-    <PointerLockControls rget={[0, 0, 0]} args={[camera, gl.domElement]} />
+    <PointerLockControls
+      selector="#button"
+      rget={[0, 0, 0]}
+      args={[camera, gl.domElement]}
+    />
   );
 }
 
