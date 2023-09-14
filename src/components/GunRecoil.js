@@ -3,7 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import { Euler } from "three";
 
-function GunRecoil({ aiming, shooting }) {
+function GunRecoil({ fov, aiming, shooting }) {
   const { gl, camera } = useThree();
 
   const RECOIL = 2;
@@ -28,13 +28,18 @@ function GunRecoil({ aiming, shooting }) {
     camera.quaternion.setFromEuler(newCamera);
   };
 
+  useEffect(() => {
+    camera.fov = fov;
+    camera.updateProjectionMatrix();
+  }, [fov]);
+
   useFrame(() => {
-    if (aiming && camera.fov > 70) {
+    if (aiming && camera.fov > fov - 30) {
       camera.fov -= 5;
       camera.updateProjectionMatrix();
     }
 
-    if (!aiming && camera.fov < 104) {
+    if (!aiming && camera.fov < fov) {
       camera.fov += 5;
       camera.updateProjectionMatrix();
     }

@@ -29,15 +29,15 @@
         }
         
         .dot {
-          display: none;
           position: absolute;
           top: 50%;
           left: 50%;
           width: 10px;
           height: 10px;
-          border-radius: 100;
+          border-radius: 100%;
           transform: translate3d(-50%, -50%, 0);
           border: 2px solid white;
+          z-index: 9999;
         }
         
         button {

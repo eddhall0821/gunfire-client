@@ -4,6 +4,7 @@ import {
   PointerLockControls,
   KeyboardControls,
   Stats,
+  Circle,
 } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Ground } from "./Ground";
@@ -17,25 +18,37 @@ import MuzzleFlash from "./components/MuzzleFlash";
 import { Cube, Cubes } from "./Cube";
 import Wall from "./components/Wall";
 import { useControls } from "leva";
-import Ball from "./components/Ball";
+import Ball, { Targets } from "./components/Ball";
 import Menu from "./components/Menu";
+import { useAppStore } from "./store/appStore";
 
 export default function App() {
   const [aiming, setAiming] = useState(false);
   const [shooting, setShooting] = useState(false);
+  const isRunning = useAppStore((state) => state.isRunning);
 
   const options = useMemo(() => {
     return {
+      fov: { value: 104, min: 80, max: 130 },
+      gravity: { value: 0, min: -50, max: 50 },
       resolution: { value: 0.5, min: 0.1, max: 2 },
       mass: { value: 1, min: 1, max: 10 },
-      size: { value: 0.1, min: 0.1, max: 10 },
+      size: { value: 1, min: 0.1, max: 10 },
       restitution: { value: 1.5, min: 1, max: 2 },
+      weapon: { value: false },
+      crosshair: { value: true },
     };
   }, []);
-  const { size, resolution, mass, restitution } = useControls(
-    "options",
-    options
-  );
+  const {
+    fov,
+    weapon,
+    gravity,
+    size,
+    resolution,
+    mass,
+    restitution,
+    crosshair,
+  } = useControls("options", options);
 
   const onPointerDown = (e) => {
     switch (e.button) {
@@ -79,6 +92,12 @@ export default function App() {
 
   return (
     <>
+      <div
+        className="dot"
+        style={{
+          display: crosshair && !aiming ? "block" : "none",
+        }}
+      />
       <SocketManager />
       <KeyboardControls
         map={[
@@ -95,8 +114,8 @@ export default function App() {
           dpr={resolution}
           shadows
           camera={{
-            fov: 104,
-            // aspect: 1920 / 1080
+            fov: fov,
+            // aspect: 1920 / 1080,
           }}
           onMouseDown={onPointerDown}
           onPointerUp={onPointerUp}
@@ -110,20 +129,23 @@ export default function App() {
             <Physics gravity={[0, -30, 0]}>
               <Ground />
               <Wall />
-              <Player aiming={aiming} shooting={shooting} />
+              <Player aiming={aiming} shooting={shooting} weapon={weapon} />
               {/* <Cube position={[0, 0.5, -10]} />
               <Cubes /> */}
               <Soldiers />
-              <Ball
-                position={[5, 5, 5]}
+            </Physics>
+            <Physics gravity={[0, gravity, 0]}>
+              <Ground />
+              <Wall />
+              <Targets
                 mass={mass}
                 restitution={restitution}
                 size={size}
+                shooting={shooting}
               />
             </Physics>
-            <GunRecoil aiming={aiming} shooting={shooting} />
+            <GunRecoil fov={fov} aiming={aiming} shooting={shooting} />
           </mesh>
-
           <Stats showPanel={0} />
         </Canvas>
       </KeyboardControls>

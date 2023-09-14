@@ -69,7 +69,7 @@ export function Wall(props) {
       </mesh> */}
 
       {/* 천장 */}
-      <mesh receiveShadow position={[0, 12, 0]} rotation-x={-Math.PI / 2}>
+      <mesh receiveShadow position={[0, 10, 0]} rotation-x={-Math.PI / 2}>
         <boxGeometry args={[100, 100]} />
         <meshStandardMaterial
           map={texture}

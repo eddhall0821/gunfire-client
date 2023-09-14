@@ -19,7 +19,12 @@ const rotation = new THREE.Vector3();
 const notAimingWeaponVector = [0.1, -0.35, 0.6];
 const aimingWeaponVector = [0, -0.31, 0.6];
 
-export function Player({ lerp = THREE.MathUtils.lerp, aiming, shooting }) {
+export function Player({
+  lerp = THREE.MathUtils.lerp,
+  aiming,
+  shooting,
+  weapon,
+}) {
   const { weaponPosition } = useSpring({
     weaponPosition: aiming ? aimingWeaponVector : notAimingWeaponVector,
   });
@@ -96,12 +101,12 @@ export function Player({ lerp = THREE.MathUtils.lerp, aiming, shooting }) {
         // onPointerMissed={(e) => (axe.current.children[0].rotation.x = -0.5)}
       >
         <a.mesh position={weaponPosition}>
-          <MuzzleFlash shooting={shooting} />
+          <MuzzleFlash shooting={shooting} weapon={weapon} />
           <a.mesh
             scale={weaponShooting.scale}
             position={weaponShooting.position}
           >
-            <Axe />
+            {weapon && <Axe />}
           </a.mesh>
         </a.mesh>
       </group>
