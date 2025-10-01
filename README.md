@@ -1,9 +1,7 @@
 # Gunfire Client by React + Threejs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
-
-![ezgif-122fca163dde21 (1)](https://github.com/user-attachments/assets/61cfc9fb-3cdb-49d1-905e-c0505daa8690)
+<img src="https://github.com/user-attachments/assets/61cfc9fb-3cdb-49d1-905e-c0505daa8690" width="600" />
 
 demo : https://eddhall0821.github.io/gunfire-client/
 
@@ -18,10 +16,9 @@ demo : https://eddhall0821.github.io/gunfire-client/
 
 
 소켓통신을 이용한 간단한 멀티플레이 기능을 구현했으나, 3차원 공간에서의 멀티플레이 디버깅에 어려움을 겪었습니다.
-
 이에 따라 다음 프로젝트에서는 2D 환경을 기반으로 멀티플레이를 구현하였습니다. (https://github.com/eddhall0821/dodge-client)
 
-##Preview
+### Preview
 
 ![dodge](https://github.com/user-attachments/assets/dd80b3ff-034e-4181-a5d8-c9d60d10cb0d)
 
