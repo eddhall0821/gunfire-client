@@ -7,6 +7,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 demo : https://eddhall0821.github.io/gunfire-client/
 
+## Note
+
+총기 반동을 구현하기 위해 카메라의 회전에 일시적인 변화를 주는 방식을 사용했습니다. 카메라의 최종 회전 상태는 짐벌락(Gimbal Lock) 문제를 피하고 부드러운 누적 회전을 보장하기 위해 쿼터니안(Quaternion) 으로 유지합니다. 그러나 반동은 특정 축(pitch, X축)만을 빠르게 변화시키는 연산이므로, 이를 직관적으로 다루기 위해 일시적으로 Euler 각도로 변환하여 수정한 뒤 다시 쿼터니안으로 되돌리는 방식을 채택했습니다.
+
+이 접근법은 사용자가 마우스로 제어하는 시점 회전과 총기 반동 효과가 자연스럽게 합쳐지며, 연속적인 발사 상황에서도 안정적인 회전 처리가 가능합니다.
+
+해당 구현 코드는 **components/GunRecoil.js**에 위치합니다.
 
 ## Available Scripts
 
@@ -44,6 +51,9 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+##Logs
+1. 반동을 구현하기 위해, 오일러각을 쿼터니안으로 변경하고, 다시 오일러 각으로 변경하였음. threejs에 1인칭 카메라를 기본적으로 제공하는 perspective view
 
 ## Learn More
 
